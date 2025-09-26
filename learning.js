@@ -138,42 +138,53 @@ const app = express(); //now this app is creating a new web server
 
 //app.use("/route",rH,[rH2,rH3],rH4,rH5); //This is the way that how we handle the route handler
 //we can also make the array of route handlers
-app.use("/user",(req,res,next) =>{
-    //Route handler 
-    //res.send("Route handler 1");
-    //if we don't send the response back then we hanging there
-    console.log("Handling the route user!!!");
-    // res.send("Response!!!");//if i am not comment this code then it gives first response and in the console 
-    //gives error message and send response 1 not response 2
+// app.use("/user",(req,res,next) =>{
+//     //Route handler 
+//     //res.send("Route handler 1");
+//     //if we don't send the response back then we hanging there
+//     console.log("Handling the route user!!!");
+//     // res.send("Response!!!");//if i am not comment this code then it gives first response and in the console 
+//     //gives error message and send response 1 not response 2
 
-    //express js says if next is passed as an argument in function then 
-    //after we write next route handler then it pass to the 2nd route handler
-    //and 2nd route handler working
-    next();//this next function is giving to us by express js 
-    //what happens if we write res.send after next();
-    // res.send("Response 1!!"); //if we do it after next then it must send the 2nd response and
-    //also print the error msg on console
-},
-//multiple route handlers in single one
-// [
-(req,res,next) =>{
-    console.log("Handling the route user2!!!");
-    // res.send("2nd Response!!!");
-    next();
-},
+//     //express js says if next is passed as an argument in function then 
+//     //after we write next route handler then it pass to the 2nd route handler
+//     //and 2nd route handler working
+//     next();//this next function is giving to us by express js 
+//     //what happens if we write res.send after next();
+//     // res.send("Response 1!!"); //if we do it after next then it must send the 2nd response and
+//     //also print the error msg on console
+// },
+// //multiple route handlers in single one
+// // [
+// (req,res,next) =>{
+//     console.log("Handling the route user2!!!");
+//     // res.send("2nd Response!!!");
+//     next();
+// },
 
-(req,res,next) =>{
-    console.log("Handling the route user3!!!");
-    // res.send("3rd Response!!!");
-    next();
-},
-// ],
-(req,res,next) =>{
-    console.log("Handling the route user4!!!");
-    // res.send("4th Response!!!");
-    next();
-})
-//code is still running and giving and error cannot get error
+// (req,res,next) =>{
+//     console.log("Handling the route user3!!!");
+//     // res.send("3rd Response!!!");
+//     next();
+// },
+// // ],
+// (req,res,next) =>{
+//     console.log("Handling the route user4!!!");
+//     // res.send("4th Response!!!");
+//     next();
+// })
+// //code is still running and giving and error cannot get error
+
+
+
+//-------------------------------------------------------------------------------------------------------
+// Middleware 
+app.get("/admin/getAllData",(req,res) =>{
+    res.send("Data sent successfully");
+});
+app.get("/admin/deleteUser",(req,res) =>{
+    res.send("Deleted a User");
+});
 
 app.listen(7777,() => {
     console.log("Server is successfully listening on port 7777.....")
